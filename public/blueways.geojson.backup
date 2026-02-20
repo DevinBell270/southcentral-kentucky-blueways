@@ -1,0 +1,1480 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lock # 5 Rd. (1749)",
+        "river": "Green River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.400072,
+          37.169387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hwy 185",
+        "river": "Green River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.40842,
+          37.154255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lock # 4 Woodbury (403)",
+        "river": "Green River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.62379,
+          37.18054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hwy 101",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.204718,
+          36.933334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Martinsville Ford (961)",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.229182,
+          36.913633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Iron Bridge Road",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.258562,
+          36.941342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Weldon Peete Park",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.410224,
+          37.006431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "State Street Bridge",
+        "river": "Barren River",
+        "type": "Access Point",
+        "warning": "Dangerous rapid-- Portage river left"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.428694,
+          37.000443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Beech Bend Park (private)",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.39869,
+          37.019438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boat Landing Road Park",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.447139,
+          37.020274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "H.P. Thomas Landing",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.497866,
+          37.035418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Greencastle Rd. (Lock #4)",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.498867,
+          37.09008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gasper Confluence (1435)",
+        "river": "Barren River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.577702,
+          37.084907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cemetery Road (Bays Fork)",
+        "river": "Bays Fork",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.234964,
+          36.903912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Old River Road (Logan Co)",
+        "river": "Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.681278,
+          36.977836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hullet Lane (private)",
+        "river": "Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.659086,
+          36.993844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "1083 Access",
+        "river": "Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.63091,
+          36.991171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jackson Bridge (626)",
+        "river": "Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.60673,
+          37.020627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Morgantown Rd. (Hwy 231)",
+        "river": "Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.596076,
+          37.053427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Browning Rd Access",
+        "river": "Clear Fork of Gasper River",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.637667,
+          36.949167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "240 Woodburn Allen Spg. Rd.",
+        "river": "Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.416404,
+          36.84241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Romanza Johnson Park",
+        "river": "Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.372368,
+          36.873116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Phil Moore Park",
+        "river": "Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.38089,
+          36.895313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Old Scottsville Rd.",
+        "river": "Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.392284,
+          36.935317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cemetery Rd. (Drakes)",
+        "river": "Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.381972,
+          36.972944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sadler Ford Bridge",
+        "river": "West Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.51257,
+          36.808274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woody Atkinson Rd. Bridge",
+        "river": "West Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.461047,
+          36.802224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "622",
+        "river": "West Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.423474,
+          36.837904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Goodrum Rd.",
+        "river": "Middle Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.39449,
+          36.818683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Duncan Rd. Ford",
+        "river": "Middle Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.409716,
+          36.827782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "240 Woodburn Allen Spgs. Rd. (Trammel)",
+        "river": "Trammel Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.331517,
+          36.827468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boyce-Fairview Rd.",
+        "river": "Trammel Fork of Drakes Creek",
+        "type": "Access Point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.349138,
+          36.844968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Lock # 5 Rd. (1749) to Hwy 185",
+        "river": "Green River",
+        "distance_miles": 2,
+        "kdfwr_float_time": "Approx. 1 hour",
+        "description": "A scenic, shorter section of the Green River offering pooled and flat water. Good habitat for smallmouth bass and channel catfish.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03311500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.39972604114088,
+            37.16961863417001
+          ],
+          [
+            -86.40307673537885,
+            37.16897585316819
+          ],
+          [
+            -86.40694451206122,
+            37.16801991233616
+          ],
+          [
+            -86.40915762492197,
+            37.16732767177116
+          ],
+          [
+            -86.41064682236097,
+            37.16625633458759
+          ],
+          [
+            -86.41157757076073,
+            37.16431140673501
+          ],
+          [
+            -86.41178440373815,
+            37.16299278311345
+          ],
+          [
+            -86.41159825405842,
+            37.16159172030811
+          ],
+          [
+            -86.41114322150766,
+            37.15969612341402
+          ],
+          [
+            -86.41031588959686,
+            37.1578499311826
+          ],
+          [
+            -86.40880600886021,
+            37.15432225993838
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Hwy 185 to Lock # 4 Woodbury (403)",
+        "river": "Green River",
+        "distance_miles": 19,
+        "kdfwr_float_time": "9 - 10 hours (Full Day)",
+        "description": "A long, pooled float leading down to the historic Lock & Dam #4 at Woodbury. Anglers should look for undercut banks and deep holes for catfish and bass.",
+        "hazards": "Very long distance with limited mid-point access; be prepared for a full day on the water.",
+        "usgs_gauge_id": "03311500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.40842,
+            37.154255
+          ],
+          [
+            -86.62379,
+            37.18054
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Hwy 101 to Martinsville Ford (961)",
+        "river": "Barren River",
+        "distance_miles": 6,
+        "kdfwr_float_time": "Approx. 3 hours",
+        "description": "Offers a good mix of shallow shoals and deep rocky pools. Excellent stream smallmouth bass fishing.",
+        "hazards": "A variety of shallow shoals may require dragging in low water.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.204718,
+            36.933334
+          ],
+          [
+            -86.229182,
+            36.913633
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Martinsville Ford (961) to Iron Bridge Road",
+        "river": "Barren River",
+        "distance_miles": 5,
+        "kdfwr_float_time": "Approx. 2.5 hours",
+        "description": "A remote-feeling stretch of the Barren River. Good habitat for spotted and smallmouth bass.",
+        "hazards": "Poor access at Iron Bridge Road.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.229182,
+            36.913633
+          ],
+          [
+            -86.258562,
+            36.941342
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Iron Bridge Road to Weldon Peete Park",
+        "river": "Barren River",
+        "distance_miles": 19,
+        "kdfwr_float_time": "9 - 10 hours (Full Day)",
+        "description": "A long float that becomes increasingly pooled and deep as it approaches the Bowling Green area.",
+        "hazards": "Long float distance and poor access at the put-in.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.258562,
+            36.941342
+          ],
+          [
+            -86.410224,
+            37.006431
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Weldon Peete Park to State Street Bridge",
+        "river": "Barren River",
+        "distance_miles": 1,
+        "kdfwr_float_time": "Approx. 30 minutes",
+        "description": "A very short urban float through Bowling Green.",
+        "hazards": "Dangerous rapid. Portage is highly recommended on the river left.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.41020646332028,
+            37.00640383863352
+          ],
+          [
+            -86.4137885,
+            37.0049289
+          ],
+          [
+            -86.4163857,
+            37.0036542
+          ],
+          [
+            -86.4180631,
+            37.0023218
+          ],
+          [
+            -86.4219047,
+            36.9997003
+          ],
+          [
+            -86.4239157,
+            36.9988793
+          ],
+          [
+            -86.4248626,
+            36.998764
+          ],
+          [
+            -86.4277654,
+            36.9999058
+          ],
+          [
+            -86.4284538,
+            37.000319
+          ],
+          [
+            -86.42869996847449,
+            37.00043491560224
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "State Street Bridge to Beech Bend Park (private)",
+        "river": "Barren River",
+        "distance_miles": 2,
+        "kdfwr_float_time": "Approx. 1 hour",
+        "description": "A flatwater float leaving the city limits. Beech Bend provides plenty of bank fishing areas (for registered campers).",
+        "hazards": "None noted. Watch for motorized boat traffic.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.428694,
+            37.000443
+          ],
+          [
+            -86.39869,
+            37.019438
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Beech Bend Park (private) to Boat Landing Road Park",
+        "river": "Barren River",
+        "distance_miles": 4,
+        "kdfwr_float_time": "Approx. 2 hours",
+        "description": "Scenic river corridor. The water here is pooled from the downstream lock influence, making for an easy paddle.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.39869,
+            37.019438
+          ],
+          [
+            -86.447139,
+            37.020274
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Boat Landing Road Park to H.P. Thomas Landing",
+        "river": "Barren River",
+        "distance_miles": 8,
+        "kdfwr_float_time": "Approx. 4 hours",
+        "description": "Slower water that is suitable for all boat types, including motorized watercraft. Good for catfish and bass.",
+        "hazards": "Watch for motorized boat traffic and wakes.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.447139,
+            37.020274
+          ],
+          [
+            -86.497866,
+            37.035418
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "H.P. Thomas Landing to Greencastle Rd. (Lock #4)",
+        "river": "Barren River",
+        "distance_miles": 9,
+        "kdfwr_float_time": "Approx. 4.5 hours",
+        "description": "Deep, pooled water heavily influenced by Lock and Dam 1 near Greencastle.",
+        "hazards": "Motorized boat traffic.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.497866,
+            37.035418
+          ],
+          [
+            -86.498867,
+            37.09008
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Greencastle Rd. (Lock #4) to Gasper Confluence (1435)",
+        "river": "Barren River",
+        "distance_miles": 9,
+        "kdfwr_float_time": "Approx. 4.5 hours",
+        "description": "Continues down the lower Barren River towards the confluence with the Gasper River. Features 'Sally's Rock' near the convergence.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.498867,
+            37.09008
+          ],
+          [
+            -86.577702,
+            37.084907
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Gasper Confluence (1435) to Lock # 4 Woodbury (403)",
+        "river": "Barren River",
+        "distance_miles": 8,
+        "kdfwr_float_time": "Approx. 4 hours",
+        "description": "The final section of the lower Barren River before it meets the Green River at Woodbury.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.577702,
+            37.084907
+          ],
+          [
+            -86.623279,
+            37.18054
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Cemetery Road to Martinsville Ford",
+        "river": "Bays Fork",
+        "distance_miles": 4,
+        "kdfwr_float_time": "Approx. 2 hours",
+        "description": "A small, intimate stream flowing into the Barren River. Better floated in spring or after substantial rains.",
+        "hazards": "Likely to encounter strainers and require dragging in late summer low water.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.2348101549037,
+            36.9038818038713
+          ],
+          [
+            -86.23495727099676,
+            36.90446095489327
+          ],
+          [
+            -86.23502517073176,
+            36.90470528291232
+          ],
+          [
+            -86.23510438708985,
+            36.904931511862
+          ],
+          [
+            -86.23521755331484,
+            36.90516678925812
+          ],
+          [
+            -86.23531940291791,
+            36.90547445860412
+          ],
+          [
+            -86.23536466940793,
+            36.905863568059274
+          ],
+          [
+            -86.23536466940793,
+            36.906171234595945
+          ],
+          [
+            -86.23551178550099,
+            36.90655129154557
+          ],
+          [
+            -86.23553441874598,
+            36.90685895530841
+          ],
+          [
+            -86.23508175384426,
+            36.90705803120004
+          ],
+          [
+            -86.23454987258503,
+            36.90715756895055
+          ],
+          [
+            -86.23418774066387,
+            36.90711232453461
+          ],
+          [
+            -86.23361059291405,
+            36.90666892783683
+          ],
+          [
+            -86.23280711271367,
+            36.90616218559789
+          ],
+          [
+            -86.23229786469945,
+            36.90618933258878
+          ],
+          [
+            -86.2318112499302,
+            36.90673227037976
+          ],
+          [
+            -86.23155096761157,
+            36.907456181424365
+          ],
+          [
+            -86.23118883569039,
+            36.907646206935055
+          ],
+          [
+            -86.23056642145059,
+            36.90761906046259
+          ],
+          [
+            -86.23034008900001,
+            36.90758286515093
+          ],
+          [
+            -86.22970635805007,
+            36.90701278667332
+          ],
+          [
+            -86.22932159288332,
+            36.90694944436328
+          ],
+          [
+            -86.22893682771718,
+            36.90713947113615
+          ],
+          [
+            -86.22854074592794,
+            36.90772764624381
+          ],
+          [
+            -86.22848416281545,
+            36.90803530526267
+          ],
+          [
+            -86.22675271956659,
+            36.91096705249109
+          ],
+          [
+            -86.22646980400292,
+            36.911754261724084
+          ],
+          [
+            -86.22628873804236,
+            36.91216143572616
+          ],
+          [
+            -86.22618688843929,
+            36.91250526985684
+          ],
+          [
+            -86.22619820506178,
+            36.912668138115066
+          ],
+          [
+            -86.22912921030026,
+            36.9137358214154
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Old River Road (Logan Co) to Hullet Lane",
+        "river": "Gasper River",
+        "distance_miles": 4,
+        "kdfwr_float_time": "Approx. 2.5 hours",
+        "description": "A narrow and scenic stream section. Features good rock bars that hold smallmouth bass.",
+        "hazards": "Strainers are possible; take-out at Hullet Lane requires landowner permission.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.681278,
+            36.977836
+          ],
+          [
+            -86.659086,
+            36.993844
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Hullet Lane to 1083 Access",
+        "river": "Gasper River",
+        "distance_miles": 3,
+        "kdfwr_float_time": "Approx. 1.5 - 2 hours",
+        "description": "Features stream drops, rock gardens, islands, and plunge pools. This stretch provides perfect smallmouth bass habitat.",
+        "hazards": "Rock gardens may require dragging in low water conditions.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.659086,
+            36.993844
+          ],
+          [
+            -86.63091,
+            36.991171
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "1083 Access to Jackson Bridge (626)",
+        "river": "Gasper River",
+        "distance_miles": 5,
+        "kdfwr_float_time": "Approx. 3 hours",
+        "description": "Exposed bluffs and larger deeper holes that hold better smallmouth bass. The last few miles have sizeable rock gardens that grow to interesting rapids. Features the most scenic stream bluffs in southern Kentucky.",
+        "hazards": "Rock gardens and small rapids.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.63091,
+            36.991171
+          ],
+          [
+            -86.60673,
+            37.020627
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Jackson Bridge (626) to Morgantown Rd. (Hwy 231)",
+        "river": "Gasper River",
+        "distance_miles": 4,
+        "kdfwr_float_time": "Approx. 2 - 3 hours",
+        "description": "Features 'Put-In Rapid' and 'Surfers'. At normal summer flows, these become rock gardens that may require a walk-through and drag.",
+        "hazards": "Only whitewater stretch in Warren Co. At higher water levels, the rapids rise to Class II. Inexperienced paddlers should use caution.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.60673,
+            37.020627
+          ],
+          [
+            -86.596076,
+            37.053427
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Morgantown Rd. (Hwy 231) to Gasper Confluence",
+        "river": "Gasper River",
+        "distance_miles": 11,
+        "kdfwr_float_time": "6 - 7 hours (Full Day)",
+        "description": "A tranquil, good run for beginners and families. Paddlers will float past Sally's Rock near the Barren River confluence. A full day float.",
+        "hazards": "Long distance; requires an early morning put-in if planning to fish.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.596076,
+            37.053427
+          ],
+          [
+            -86.577702,
+            37.084907
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Browning Rd Access to 1083 Access",
+        "river": "Clear Fork of Gasper River",
+        "distance_miles": 6,
+        "kdfwr_float_time": "Approx. 3 - 4 hours",
+        "description": "A remote, intimate stream with many rock gardens and small pockets. A perfect venue for fly rod anglers pursuing smallmouth bass.",
+        "hazards": "Becomes very shallow during the summer, requiring dragging.",
+        "usgs_gauge_id": "03314500",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.637667,
+            36.949167
+          ],
+          [
+            -86.63091,
+            36.991171
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "240 Woodburn Allen Spg. Rd. to Romanza Johnson Park",
+        "river": "Drakes Creek",
+        "distance_miles": 6,
+        "kdfwr_float_time": "Approx. 3 - 4 hours",
+        "description": "A scenic and highly popular float on the main stem. Features excellent smallmouth bass and rock bass habitat among the shoals.",
+        "hazards": "Occasional downed trees (strainers) along the banks.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.416404,
+            36.84241
+          ],
+          [
+            -86.372368,
+            36.873116
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Romanza Johnson Park to Phil Moore Park",
+        "river": "Drakes Creek",
+        "distance_miles": 6,
+        "kdfwr_float_time": "Approx. 3 - 4 hours",
+        "description": "A classic Drakes Creek float characterized by limestone bluffs and large gravel bars.",
+        "hazards": "This is a heavily trafficked area during the summer weekends.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.372368,
+            36.873116
+          ],
+          [
+            -86.38089,
+            36.895313
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Phil Moore Park to Old Scottsville Rd.",
+        "river": "Drakes Creek",
+        "distance_miles": 6,
+        "kdfwr_float_time": "Approx. 3 hours",
+        "description": "A wide and relatively deep section of Drakes Creek offering good fishing opportunities.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.38089,
+            36.895313
+          ],
+          [
+            -86.392284,
+            36.935317
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Old Scottsville Rd. to Cemetery Rd. (Drakes)",
+        "river": "Drakes Creek",
+        "distance_miles": 7,
+        "kdfwr_float_time": "Approx. 3.5 hours",
+        "description": "A meandering lower section of Drakes Creek nearing the confluence.",
+        "hazards": "Poor access conditions at Cemetery Rd.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.392284,
+            36.935317
+          ],
+          [
+            -86.381972,
+            36.972944
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Cemetery Rd. (Drakes) to Weldon Peete Park",
+        "river": "Drakes Creek",
+        "distance_miles": 8,
+        "kdfwr_float_time": "Approx. 4 hours",
+        "description": "The final stretch of Drakes Creek entering the pooled waters of the Barren River.",
+        "hazards": "Increase in motorized boat traffic as the creek merges with the Barren River.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.381972,
+            36.972944
+          ],
+          [
+            -86.410224,
+            37.006431
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Sadler Ford Bridge to Woody Atkinson Rd. Bridge",
+        "river": "West Fork of Drakes Creek",
+        "distance_miles": 5,
+        "kdfwr_float_time": "Approx. 2.5 hours",
+        "description": "A peaceful, small stream setting. Excellent for viewing wildlife.",
+        "hazards": "Expect to drag through riffles in late summer; watch for strainers.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.51257,
+            36.808274
+          ],
+          [
+            -86.461047,
+            36.802224
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Woody Atkinson Rd. Bridge to 622",
+        "river": "West Fork of Drakes Creek",
+        "distance_miles": 4,
+        "kdfwr_float_time": "Approx. 2 hours",
+        "description": "Mix of shallow bars and deeper holes holding fish.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.461047,
+            36.802224
+          ],
+          [
+            -86.423474,
+            36.837904
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "622 to 240",
+        "river": "West Fork of Drakes Creek",
+        "distance_miles": 1,
+        "kdfwr_float_time": "Approx. 45 minutes",
+        "description": "The short confluence area where the West Fork meets the main stem of Drakes Creek.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.423474,
+            36.837904
+          ],
+          [
+            -86.416404,
+            36.84241
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Goodrum Rd. to Duncan Rd. Ford",
+        "river": "Middle Fork of Drakes Creek",
+        "distance_miles": 1,
+        "kdfwr_float_time": "Approx. 45 minutes",
+        "description": "A very short float or convenient wade-fishing area.",
+        "hazards": "Can become too shallow to float during dry periods.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.39449,
+            36.818683
+          ],
+          [
+            -86.409716,
+            36.827782
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Duncan Rd. Ford to 240",
+        "river": "Middle Fork of Drakes Creek",
+        "distance_miles": 3,
+        "kdfwr_float_time": "Approx. 1.5 hours",
+        "description": "A beautiful fork of Drakes Creek that is great for wading or short paddles.",
+        "hazards": "None noted.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.409716,
+            36.827782
+          ],
+          [
+            -86.416404,
+            36.84241
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "240 Woodburn Allen Spgs. Rd. to Boyce-Fairview Rd.",
+        "river": "Trammel Fork of Drakes Creek",
+        "distance_miles": 2,
+        "kdfwr_float_time": "Approx. 1 hour",
+        "description": "A quick, scenic stretch on the Trammel Fork.",
+        "hazards": "Watch for occasional strainers.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.331517,
+            36.827468
+          ],
+          [
+            -86.349138,
+            36.844968
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_name": "Boyce-Fairview Rd. to Romanza Johnson Park",
+        "river": "Trammel Fork of Drakes Creek",
+        "distance_miles": 7,
+        "kdfwr_float_time": "Approx. 3.5 - 4 hours",
+        "description": "A fantastic day float. Trammel Fork is known for its clear water and good fishing opportunities.",
+        "hazards": "Shallow shoals may require walking the boat during low water.",
+        "usgs_gauge_id": "03314000",
+        "type": "Route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.349138,
+            36.844968
+          ],
+          [
+            -86.372368,
+            36.873116
+          ]
+        ]
+      }
+    }
+  ]
+}
