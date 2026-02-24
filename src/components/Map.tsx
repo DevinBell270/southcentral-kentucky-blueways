@@ -36,6 +36,7 @@ interface MapProps {
   selectedRiver: string | null;
   selectedRoute: string | null;
   onRouteSelect: (properties: any) => void;
+  onPointSelect: (properties: any) => void;
   isMobile: boolean;
 }
 
@@ -79,7 +80,7 @@ function MapController({
   return null;
 }
 
-export default function Map({ selectedRiver, selectedRoute, onRouteSelect, isMobile }: MapProps) {
+export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPointSelect, isMobile }: MapProps) {
   const [geoJsonData, setGeoJsonData] = useState<any>(null);
 
   useEffect(() => {
@@ -108,14 +109,9 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, isMob
       const props = feature.properties;
 
       if (feature.geometry.type === "Point") {
-        const popupContent = `
-          <div class="p-2">
-            <h3 class="font-bold text-lg mb-1">${props.name}</h3>
-            <p class="text-sm text-gray-600">${props.river}</p>
-            ${props.warning ? `<p class="text-xs mt-1 text-red-600">${props.warning}</p>` : ""}
-          </div>
-        `;
-        layer.bindPopup(popupContent);
+        layer.on("click", () => {
+          onPointSelect(props);
+        });
       } else if (feature.geometry.type === "LineString") {
         if (!isMobile) {
           const popupContent = `

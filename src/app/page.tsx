@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Menu } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import RouteInfoBox from "@/components/RouteInfoBox";
+import LocationInfoBox from "@/components/LocationInfoBox";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const Map = dynamic(() => import("@/components/Map"), {
@@ -20,6 +21,7 @@ export default function Home() {
   const [selectedRiver, setSelectedRiver] = useState<string | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<string | null>(null);
   const [selectedRouteData, setSelectedRouteData] = useState<any | null>(null);
+  const [selectedPointData, setSelectedPointData] = useState<any | null>(null);
   const [geoJsonData, setGeoJsonData] = useState<any>(null);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -33,6 +35,17 @@ export default function Home() {
 
   const handleRouteDataSelect = (data: any) => {
     setSelectedRouteData(data);
+    setSelectedPointData(null);
+    if (data?.route_name) setSelectedRoute(data.route_name);
+    if (data?.river) setSelectedRiver(data.river);
+    if (isMobile) {
+      setMobileSidebarOpen(false);
+    }
+  };
+
+  const handlePointSelect = (data: any) => {
+    setSelectedPointData(data);
+    setSelectedRouteData(null);
     if (isMobile) {
       setMobileSidebarOpen(false);
     }
@@ -45,10 +58,11 @@ export default function Home() {
           selectedRiver={selectedRiver}
           selectedRoute={selectedRoute}
           onRouteSelect={setSelectedRouteData}
+          onPointSelect={handlePointSelect}
           isMobile
         />
 
-        {!mobileSidebarOpen && !selectedRouteData && (
+        {!mobileSidebarOpen && !selectedRouteData && !selectedPointData && (
           <button
             onClick={() => setMobileSidebarOpen(true)}
             className="fixed top-4 left-4 z-30 bg-white rounded-lg shadow-lg p-3 active:bg-gray-100"
@@ -77,6 +91,15 @@ export default function Home() {
             isMobile
           />
         )}
+        {selectedPointData && (
+          <LocationInfoBox
+            point={selectedPointData}
+            geoJsonData={geoJsonData}
+            onRouteSelect={handleRouteDataSelect}
+            onClose={() => setSelectedPointData(null)}
+            isMobile
+          />
+        )}
       </div>
     );
   }
@@ -99,12 +122,22 @@ export default function Home() {
           selectedRiver={selectedRiver}
           selectedRoute={selectedRoute}
           onRouteSelect={setSelectedRouteData}
+          onPointSelect={handlePointSelect}
           isMobile={false}
         />
         {selectedRouteData && (
           <RouteInfoBox
             route={selectedRouteData}
             onClose={() => setSelectedRouteData(null)}
+            isMobile={false}
+          />
+        )}
+        {selectedPointData && (
+          <LocationInfoBox
+            point={selectedPointData}
+            geoJsonData={geoJsonData}
+            onRouteSelect={handleRouteDataSelect}
+            onClose={() => setSelectedPointData(null)}
             isMobile={false}
           />
         )}
