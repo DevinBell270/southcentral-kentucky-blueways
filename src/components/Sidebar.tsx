@@ -115,30 +115,33 @@ const SAFETY_GUIDELINES = [
   "Respect private property and wildlife",
 ];
 
-const FLOW_FILTERS: { rating: FlowRating; flag: string; label: string; sublabel: string; activeClass: string; borderClass: string }[] = [
+const FLOW_FILTERS: {
+  rating: FlowRating;
+  emoji: string;
+  label: string;
+  sublabel: string;
+  activeClass: string;
+}[] = [
   {
     rating: "red",
-    flag: "🚩",
+    emoji: "🔴",
     label: "High Hazard",
     sublabel: "Access Closed",
     activeClass: "bg-red-50 border-red-500 text-red-700",
-    borderClass: "border-red-200 text-red-600",
   },
   {
     rating: "yellow",
-    flag: "🏳️",
+    emoji: "🟡",
     label: "Use Caution",
     sublabel: "Moderate Flow",
     activeClass: "bg-yellow-50 border-yellow-500 text-yellow-700",
-    borderClass: "border-yellow-200 text-yellow-600",
   },
   {
     rating: "green",
-    flag: "🏁",
+    emoji: "🟢",
     label: "Calm Conditions",
     sublabel: "Low / Safe",
     activeClass: "bg-green-50 border-green-500 text-green-700",
-    borderClass: "border-green-200 text-green-600",
   },
 ];
 
@@ -207,7 +210,7 @@ function SidebarContent({
           Filter by Flow Rate
         </p>
         <div className="grid grid-cols-3 gap-1.5">
-          {FLOW_FILTERS.map(({ rating, flag, label, sublabel, activeClass, borderClass }) => {
+          {FLOW_FILTERS.map(({ rating, emoji, label, sublabel, activeClass }) => {
             const isActive = activeFlowFilter === rating;
             return (
               <button
@@ -224,7 +227,9 @@ function SidebarContent({
                 aria-pressed={isActive}
                 title={!hasRatings ? "Loading live flow data…" : undefined}
               >
-                <span className="text-lg leading-none">{flag}</span>
+                <span className="text-lg leading-none" aria-hidden="true">
+                  {emoji}
+                </span>
                 <span className="text-xs font-semibold leading-tight">{label}</span>
                 <span className={`text-xs leading-tight ${isActive ? "" : "text-gray-400"}`}>{sublabel}</span>
               </button>
@@ -272,9 +277,7 @@ function SidebarContent({
                 </button>
                 {river.visibleRoutes.length > 0 && (
                   <ul className="space-y-1 ml-5">
-                    {river.visibleRoutes.map((route) => {
-                      const rating = getRouteRating(route);
-                      return (
+                    {river.visibleRoutes.map((route) => (
                         <li key={route}>
                           <button
                             onClick={() => handleRouteClick(route)}
@@ -286,16 +289,10 @@ function SidebarContent({
                                 : 'text-gray-600 hover:bg-gray-50 active:bg-gray-50'
                             }`}
                           >
-                            <span className="flex items-center gap-1.5">
-                              {rating === "red" && <span className="text-xs" title="High Hazard">🚩</span>}
-                              {rating === "yellow" && <span className="text-xs" title="Use Caution">🏳️</span>}
-                              {rating === "green" && <span className="text-xs" title="Calm Conditions">🏁</span>}
-                              {route}
-                            </span>
+                            {route}
                           </button>
                         </li>
-                      );
-                    })}
+                    ))}
                   </ul>
                 )}
               </div>
