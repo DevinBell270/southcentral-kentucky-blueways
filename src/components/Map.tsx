@@ -109,7 +109,8 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
       const props = feature.properties;
 
       if (feature.geometry.type === "Point") {
-        layer.on("click", () => {
+        layer.on("click", (e: L.LeafletMouseEvent) => {
+          L.DomEvent.stopPropagation(e);
           onPointSelect(props);
         });
       } else if (feature.geometry.type === "LineString") {
