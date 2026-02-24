@@ -27,6 +27,11 @@ const RIVER_COLORS: Record<string, string> = {
   "Clear Fork of Gasper River": "#8b5cf6",
 };
 
+const SK_BOUNDS: L.LatLngBoundsExpression = [
+  [36.4, -87.8],
+  [37.6, -85.2],
+];
+
 interface MapProps {
   selectedRiver: string | null;
   selectedRoute: string | null;
@@ -180,6 +185,9 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, isMob
       <MapContainer
         center={[36.98, -86.44]}
         zoom={isMobile ? 11 : 10}
+        minZoom={9}
+        maxBounds={SK_BOUNDS}
+        maxBoundsViscosity={1.0}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
       >
