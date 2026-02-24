@@ -41,7 +41,7 @@ const RIVERS = [
     name: "Drakes Creek",
     color: "bg-blue-500",
     routes: [
-      "240 Woodburn Allen Spg. Rd. to Romanza Johnson Park",
+      "HWY-240 (Woodburn Allen Springs Road) to Romanza Johnson Park",
       "Romanza Johnson Park to Phil Moore Park",
       "Phil Moore Park to Old Scottsville Rd.",
       "Old Scottsville Rd. to Cemetery Rd. (Drakes)",
@@ -53,8 +53,8 @@ const RIVERS = [
     color: "bg-pink-500",
     routes: [
       "Sadler Ford Bridge to Woody Atkinson Rd. Bridge",
-      "Woody Atkinson Rd. Bridge to 622",
-      "622 to 240",
+      "Woody Atkinson Rd. Bridge to HWY-622 (Plano Rd)",
+      "HWY-622 (Plano Rd) to HWY-240 (Woodburn Allen Springs Road)",
     ],
   },
   {
@@ -62,7 +62,7 @@ const RIVERS = [
     color: "bg-amber-500",
     routes: [
       "Goodrum Rd. to Duncan Rd. Ford",
-      "Duncan Rd. Ford to 240",
+      "Duncan Rd. Ford to HWY-240 (Woodburn Allen Springs Road)",
     ],
   },
   {
@@ -76,7 +76,7 @@ const RIVERS = [
     name: "Trammel Fork of Drakes Creek",
     color: "bg-red-500",
     routes: [
-      "240 Woodburn Allen Spgs. Rd. to Boyce-Fairview Rd.",
+      "HWY-240 (Woodburn Allen Springs Road) (Trammel) to Boyce-Fairview Rd.",
       "Boyce-Fairview Rd. to Romanza Johnson Park",
     ],
   },

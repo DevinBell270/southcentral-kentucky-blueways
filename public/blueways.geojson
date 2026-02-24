@@ -305,7 +305,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "240 Woodburn Allen Spg. Rd.",
+        "name": "HWY-240 (Woodburn Allen Springs Road)",
         "river": "Drakes Creek",
         "type": "Access Point"
       },
@@ -410,7 +410,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "622",
+        "name": "HWY-622 (Plano Rd)",
         "river": "West Fork of Drakes Creek",
         "type": "Access Point"
       },
@@ -455,7 +455,7 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "240 Woodburn Allen Spgs. Rd. (Trammel)",
+        "name": "HWY-240 (Woodburn Allen Springs Road) (Trammel)",
         "river": "Trammel Fork of Drakes Creek",
         "type": "Access Point"
       },
@@ -7131,7 +7131,7 @@
     {
       "type": "Feature",
       "properties": {
-        "route_name": "240 Woodburn Allen Spg. Rd. to Romanza Johnson Park",
+        "route_name": "HWY-240 (Woodburn Allen Springs Road) to Romanza Johnson Park",
         "river": "Drakes Creek",
         "distance_miles": 6,
         "kdfwr_float_time": "Approx. 3 - 4 hours",
@@ -9555,7 +9555,7 @@
     {
       "type": "Feature",
       "properties": {
-        "route_name": "Woody Atkinson Rd. Bridge to 622",
+        "route_name": "Woody Atkinson Rd. Bridge to HWY-622 (Plano Rd)",
         "river": "West Fork of Drakes Creek",
         "distance_miles": 4,
         "kdfwr_float_time": "Approx. 2 hours",
@@ -10005,7 +10005,7 @@
     {
       "type": "Feature",
       "properties": {
-        "route_name": "622 to 240",
+        "route_name": "HWY-622 (Plano Rd) to HWY-240 (Woodburn Allen Springs Road)",
         "river": "West Fork of Drakes Creek",
         "distance_miles": 1,
         "kdfwr_float_time": "Approx. 45 minutes",
@@ -10277,7 +10277,7 @@
     {
       "type": "Feature",
       "properties": {
-        "route_name": "Duncan Rd. Ford to 240",
+        "route_name": "Duncan Rd. Ford to HWY-240 (Woodburn Allen Springs Road)",
         "river": "Middle Fork of Drakes Creek",
         "distance_miles": 3,
         "kdfwr_float_time": "Approx. 1.5 hours",
@@ -10519,7 +10519,7 @@
     {
       "type": "Feature",
       "properties": {
-        "route_name": "240 Woodburn Allen Spgs. Rd. to Boyce-Fairview Rd.",
+        "route_name": "HWY-240 (Woodburn Allen Springs Road) (Trammel) to Boyce-Fairview Rd.",
         "river": "Trammel Fork of Drakes Creek",
         "distance_miles": 2,
         "kdfwr_float_time": "Approx. 1 hour",
