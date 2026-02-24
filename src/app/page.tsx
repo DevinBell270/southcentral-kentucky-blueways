@@ -7,6 +7,7 @@ import Sidebar from "@/components/Sidebar";
 import RouteInfoBox from "@/components/RouteInfoBox";
 import LocationInfoBox from "@/components/LocationInfoBox";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useFlowRatings } from "@/hooks/useFlowRatings";
 
 const Map = dynamic(() => import("@/components/Map"), {
   ssr: false,
@@ -25,6 +26,7 @@ export default function Home() {
   const [geoJsonData, setGeoJsonData] = useState<any>(null);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
+  const { gaugeRatings } = useFlowRatings(geoJsonData);
 
   useEffect(() => {
     fetch("/blueways.geojson")
@@ -79,6 +81,7 @@ export default function Home() {
           setSelectedRoute={setSelectedRoute}
           geoJsonData={geoJsonData}
           setSelectedRouteData={handleRouteDataSelect}
+          gaugeRatings={gaugeRatings}
           isMobile
           isOpen={mobileSidebarOpen}
           onClose={() => setMobileSidebarOpen(false)}
@@ -113,6 +116,7 @@ export default function Home() {
         setSelectedRoute={setSelectedRoute}
         geoJsonData={geoJsonData}
         setSelectedRouteData={setSelectedRouteData}
+        gaugeRatings={gaugeRatings}
         isMobile={false}
         isOpen={true}
         onClose={() => {}}

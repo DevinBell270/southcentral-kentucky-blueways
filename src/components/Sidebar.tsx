@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Waves, MapPin, AlertTriangle, X } from "lucide-react";
+import type { FlowRating } from "@/hooks/useFlowRatings";
 
 interface SidebarProps {
   selectedRiver: string | null;
@@ -10,6 +11,7 @@ interface SidebarProps {
   setSelectedRoute: (route: string | null) => void;
   geoJsonData: any;
   setSelectedRouteData: (data: any) => void;
+  gaugeRatings: Record<string, FlowRating>;
   isMobile: boolean;
   isOpen: boolean;
   onClose: () => void;
@@ -113,19 +115,79 @@ const SAFETY_GUIDELINES = [
   "Respect private property and wildlife",
 ];
 
+const FLOW_FILTERS: { rating: FlowRating; flag: string; label: string; sublabel: string; activeClass: string; borderClass: string }[] = [
+  {
+    rating: "red",
+    flag: "🚩",
+    label: "High Hazard",
+    sublabel: "Access Closed",
+    activeClass: "bg-red-50 border-red-500 text-red-700",
+    borderClass: "border-red-200 text-red-600",
+  },
+  {
+    rating: "yellow",
+    flag: "🏳️",
+    label: "Use Caution",
+    sublabel: "Moderate Flow",
+    activeClass: "bg-yellow-50 border-yellow-500 text-yellow-700",
+    borderClass: "border-yellow-200 text-yellow-600",
+  },
+  {
+    rating: "green",
+    flag: "🏁",
+    label: "Calm Conditions",
+    sublabel: "Low / Safe",
+    activeClass: "bg-green-50 border-green-500 text-green-700",
+    borderClass: "border-green-200 text-green-600",
+  },
+];
+
 function SidebarContent({
   selectedRiver,
   setSelectedRiver,
   selectedRoute,
   handleRouteClick,
+  geoJsonData,
+  gaugeRatings,
   isMobile,
 }: {
   selectedRiver: string | null;
   setSelectedRiver: (river: string | null) => void;
   selectedRoute: string | null;
   handleRouteClick: (route: string) => void;
+  geoJsonData: any;
+  gaugeRatings: Record<string, FlowRating>;
   isMobile: boolean;
 }) {
+  const [activeFlowFilter, setActiveFlowFilter] = useState<FlowRating | null>(null);
+
+  const hasRatings = Object.keys(gaugeRatings).length > 0;
+
+  const routeGaugeMap: Record<string, string> = {};
+  if (geoJsonData?.features) {
+    for (const feature of geoJsonData.features) {
+      const { route_name, usgs_gauge_id } = feature.properties ?? {};
+      if (route_name && usgs_gauge_id) {
+        routeGaugeMap[route_name] = usgs_gauge_id;
+      }
+    }
+  }
+
+  const getRouteRating = (routeName: string): FlowRating | null => {
+    const gaugeId = routeGaugeMap[routeName];
+    if (!gaugeId) return null;
+    return gaugeRatings[gaugeId] ?? null;
+  };
+
+  const visibleRivers = RIVERS.map((river) => {
+    if (!activeFlowFilter) return { ...river, visibleRoutes: river.routes };
+    const visibleRoutes = river.routes.filter((route) => {
+      const rating = getRouteRating(route);
+      return rating === null || rating === activeFlowFilter;
+    });
+    return { ...river, visibleRoutes };
+  }).filter((river) => river.visibleRoutes.length > 0);
+
   return (
     <>
       <div className="mb-6">
@@ -141,49 +203,105 @@ function SidebarContent({
       </div>
 
       <div className="mb-6">
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+          Filter by Flow Rate
+        </p>
+        <div className="grid grid-cols-3 gap-1.5">
+          {FLOW_FILTERS.map(({ rating, flag, label, sublabel, activeClass, borderClass }) => {
+            const isActive = activeFlowFilter === rating;
+            return (
+              <button
+                key={rating}
+                onClick={() => setActiveFlowFilter(isActive ? null : rating)}
+                disabled={!hasRatings}
+                className={`flex flex-col items-center gap-0.5 px-1 py-2 rounded-lg border-2 text-center transition-all ${
+                  !hasRatings
+                    ? "opacity-40 cursor-not-allowed border-gray-200 text-gray-400"
+                    : isActive
+                    ? activeClass + " shadow-sm"
+                    : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50 active:bg-gray-100"
+                }`}
+                aria-pressed={isActive}
+                title={!hasRatings ? "Loading live flow data…" : undefined}
+              >
+                <span className="text-lg leading-none">{flag}</span>
+                <span className="text-xs font-semibold leading-tight">{label}</span>
+                <span className={`text-xs leading-tight ${isActive ? "" : "text-gray-400"}`}>{sublabel}</span>
+              </button>
+            );
+          })}
+        </div>
+        {!hasRatings && (
+          <p className="text-xs text-gray-400 mt-1.5 text-center">Loading live flow data…</p>
+        )}
+        {activeFlowFilter && (
+          <button
+            onClick={() => setActiveFlowFilter(null)}
+            className="mt-2 w-full text-xs text-gray-500 hover:text-gray-700 underline text-center"
+          >
+            Clear filter — show all routes
+          </button>
+        )}
+      </div>
+
+      <div className="mb-6">
         <div className="flex items-center gap-2 mb-3">
           <MapPin className="text-blue-600" size={20} />
           <h2 className="text-lg font-semibold text-gray-800">Rivers & Routes</h2>
         </div>
-        <div className="space-y-3">
-          {RIVERS.map((river) => (
-            <div key={river.name} className="border-l-4 pl-3 py-2" style={{ borderColor: river.color.replace('bg-', '').replace('-500', '') }}>
-              <button
-                onClick={() => setSelectedRiver(river.name)}
-                className={`w-full flex items-center gap-2 mb-2 px-2 rounded transition-colors ${
-                  isMobile ? "py-2 min-h-[44px]" : "py-1"
-                } ${
-                  selectedRiver === river.name
-                    ? 'bg-blue-100 font-bold'
-                    : 'hover:bg-gray-100 active:bg-gray-100'
-                }`}
-              >
-                <div className={`w-3 h-3 rounded-full ${river.color}`}></div>
-                <h3 className="text-sm text-gray-800">{river.name}</h3>
-              </button>
-              {river.routes.length > 0 && (
-                <ul className="space-y-1 ml-5">
-                  {river.routes.map((route) => (
-                    <li key={route}>
-                      <button
-                        onClick={() => handleRouteClick(route)}
-                        className={`w-full text-left text-xs px-2 rounded transition-colors ${
-                          isMobile ? "py-2 min-h-[44px]" : "py-1"
-                        } ${
-                          selectedRoute === route
-                            ? 'bg-blue-50 text-blue-700 font-semibold'
-                            : 'text-gray-600 hover:bg-gray-50 active:bg-gray-50'
-                        }`}
-                      >
-                        {route}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+        {visibleRivers.length === 0 ? (
+          <p className="text-sm text-gray-500 text-center py-4">
+            No routes match the selected flow condition.
+          </p>
+        ) : (
+          <div className="space-y-3">
+            {visibleRivers.map((river) => (
+              <div key={river.name} className="border-l-4 pl-3 py-2" style={{ borderColor: river.color.replace('bg-', '').replace('-500', '') }}>
+                <button
+                  onClick={() => setSelectedRiver(river.name)}
+                  className={`w-full flex items-center gap-2 mb-2 px-2 rounded transition-colors ${
+                    isMobile ? "py-2 min-h-[44px]" : "py-1"
+                  } ${
+                    selectedRiver === river.name
+                      ? 'bg-blue-100 font-bold'
+                      : 'hover:bg-gray-100 active:bg-gray-100'
+                  }`}
+                >
+                  <div className={`w-3 h-3 rounded-full ${river.color}`}></div>
+                  <h3 className="text-sm text-gray-800">{river.name}</h3>
+                </button>
+                {river.visibleRoutes.length > 0 && (
+                  <ul className="space-y-1 ml-5">
+                    {river.visibleRoutes.map((route) => {
+                      const rating = getRouteRating(route);
+                      return (
+                        <li key={route}>
+                          <button
+                            onClick={() => handleRouteClick(route)}
+                            className={`w-full text-left text-xs px-2 rounded transition-colors ${
+                              isMobile ? "py-2 min-h-[44px]" : "py-1"
+                            } ${
+                              selectedRoute === route
+                                ? 'bg-blue-50 text-blue-700 font-semibold'
+                                : 'text-gray-600 hover:bg-gray-50 active:bg-gray-50'
+                            }`}
+                          >
+                            <span className="flex items-center gap-1.5">
+                              {rating === "red" && <span className="text-xs" title="High Hazard">🚩</span>}
+                              {rating === "yellow" && <span className="text-xs" title="Use Caution">🏳️</span>}
+                              {rating === "green" && <span className="text-xs" title="Calm Conditions">🏁</span>}
+                              {route}
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
@@ -213,6 +331,7 @@ export default function Sidebar({
   setSelectedRoute,
   geoJsonData,
   setSelectedRouteData,
+  gaugeRatings,
   isMobile,
   isOpen,
   onClose,
@@ -314,6 +433,8 @@ export default function Sidebar({
               setSelectedRiver={handleRiverClick}
               selectedRoute={selectedRoute}
               handleRouteClick={handleRouteClick}
+              geoJsonData={geoJsonData}
+              gaugeRatings={gaugeRatings}
               isMobile
             />
           </div>
@@ -344,6 +465,8 @@ export default function Sidebar({
             setSelectedRiver={handleRiverClick}
             selectedRoute={selectedRoute}
             handleRouteClick={handleRouteClick}
+            geoJsonData={geoJsonData}
+            gaugeRatings={gaugeRatings}
             isMobile={false}
           />
         </div>
