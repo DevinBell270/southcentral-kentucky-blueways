@@ -223,7 +223,7 @@ export default function Sidebar({
   const touchStartY = useRef(0);
   const sheetRef = useRef<HTMLDivElement>(null);
 
-  const handleRiverClick = (riverName: string) => {
+  const handleRiverClick = (riverName: string | null) => {
     setSelectedRiver(riverName);
     setSelectedRoute(null);
   };
