@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { X } from "lucide-react";
+import { X, TriangleAlert } from "lucide-react";
 
 interface RouteInfoBoxProps {
   route: {
@@ -246,14 +246,28 @@ function RouteDetails({
               </span>
             </div>
           ) : flowCfs !== null ? (
-            <div>
-              <p className={`text-2xl ${getFlowColorClass(flowCfs)}`}>
-                {flowCfs.toFixed(0)} cfs
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {getFlowLabel(flowCfs)}
-              </p>
-            </div>
+            flowCfs > 1500 ? (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-3 flex items-start gap-3">
+                <TriangleAlert className="text-red-600 mt-0.5 shrink-0 animate-pulse" size={22} />
+                <div>
+                  <p className="text-2xl font-bold text-red-600">
+                    {flowCfs.toFixed(0)} cfs
+                  </p>
+                  <p className="text-xs font-semibold text-red-700 mt-0.5">
+                    High / Caution — dangerous conditions
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <p className={`text-2xl ${getFlowColorClass(flowCfs)}`}>
+                  {flowCfs.toFixed(0)} cfs
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {getFlowLabel(flowCfs)}
+                </p>
+              </div>
+            )
           ) : null}
         </div>
       )}
