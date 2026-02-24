@@ -117,28 +117,28 @@ const SAFETY_GUIDELINES = [
 
 const FLOW_FILTERS: {
   rating: FlowRating;
-  emoji: string;
+  iconColor: string;
   label: string;
   sublabel: string;
   activeClass: string;
 }[] = [
   {
     rating: "red",
-    emoji: "🔴",
+    iconColor: "#ef4444",
     label: "High Hazard",
     sublabel: "Access Closed",
     activeClass: "bg-red-50 border-red-500 text-red-700",
   },
   {
     rating: "yellow",
-    emoji: "🟡",
+    iconColor: "#eab308",
     label: "Use Caution",
     sublabel: "Moderate Flow",
     activeClass: "bg-yellow-50 border-yellow-500 text-yellow-700",
   },
   {
     rating: "green",
-    emoji: "🟢",
+    iconColor: "#22c55e",
     label: "Calm Conditions",
     sublabel: "Low / Safe",
     activeClass: "bg-green-50 border-green-500 text-green-700",
@@ -210,7 +210,7 @@ function SidebarContent({
           Filter by Flow Rate
         </p>
         <div className="grid grid-cols-3 gap-1.5">
-          {FLOW_FILTERS.map(({ rating, emoji, label, sublabel, activeClass }) => {
+          {FLOW_FILTERS.map(({ rating, iconColor, label, sublabel, activeClass }) => {
             const isActive = activeFlowFilter === rating;
             return (
               <button
@@ -227,9 +227,11 @@ function SidebarContent({
                 aria-pressed={isActive}
                 title={!hasRatings ? "Loading live flow data…" : undefined}
               >
-                <span className="text-lg leading-none" aria-hidden="true">
-                  {emoji}
-                </span>
+                <i
+                  className="fi fi-rr-flag-alt text-lg leading-none"
+                  style={{ color: iconColor }}
+                  aria-hidden="true"
+                />
                 <span className="text-xs font-semibold leading-tight">{label}</span>
                 <span className={`text-xs leading-tight ${isActive ? "" : "text-gray-400"}`}>{sublabel}</span>
               </button>
