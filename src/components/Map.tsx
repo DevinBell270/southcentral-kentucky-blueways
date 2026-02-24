@@ -180,8 +180,8 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
     <div className="w-full h-full">
       <MapContainer
         center={[36.98, -86.44]}
-        zoom={isMobile ? 11 : 10}
-        minZoom={9}
+        zoom={isMobile ? 10 : 12}
+        minZoom={isMobile ? 9 : 10}
         maxBounds={SK_BOUNDS}
         maxBoundsViscosity={1.0}
         style={{ height: "100%", width: "100%" }}
