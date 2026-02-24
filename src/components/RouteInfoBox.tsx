@@ -14,9 +14,10 @@ interface RouteInfoBoxProps {
     usgs_gauge_id?: string;
   };
   onClose: () => void;
+  isMobile: boolean;
 }
 
-export default function RouteInfoBox({ route, onClose }: RouteInfoBoxProps) {
+export default function RouteInfoBox({ route, onClose, isMobile }: RouteInfoBoxProps) {
   const [flowCfs, setFlowCfs] = useState<number | null>(null);
   const [flowLoading, setFlowLoading] = useState<boolean>(false);
 
@@ -50,7 +51,6 @@ export default function RouteInfoBox({ route, onClose }: RouteInfoBoxProps) {
         }
       })
       .catch((error) => {
-        // Hide live flow section on timeout or API failure.
         if (error.name !== "AbortError") {
           console.error("Flow data unavailable:", error);
         }
@@ -83,27 +83,37 @@ export default function RouteInfoBox({ route, onClose }: RouteInfoBoxProps) {
     route.hazards && route.hazards.toLowerCase() !== "none noted.";
   const shouldShowLiveFlow = flowLoading || flowCfs !== null;
 
+  const containerClass = isMobile
+    ? "fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-2xl z-50 max-h-[50vh] overflow-y-auto safe-bottom"
+    : "fixed bottom-4 right-4 bg-white rounded-xl shadow-xl z-50 max-w-sm max-h-[80vh] overflow-y-auto";
+
   return (
-    <div className="fixed bottom-4 right-4 bg-white rounded-xl shadow-xl z-50 max-w-sm max-h-[80vh] overflow-y-auto">
-      <div className="p-6">
+    <div className={containerClass}>
+      <div className={isMobile ? "p-5" : "p-6"}>
+        {isMobile && (
+          <div className="w-10 h-1 bg-gray-300 rounded-full mx-auto mb-3" />
+        )}
+
         <div className="flex justify-between items-start mb-4">
           <div className="flex-1 pr-4">
-            <h2 className="text-xl font-bold text-gray-800 mb-1">
+            <h2 className={`font-bold text-gray-800 mb-1 ${isMobile ? "text-lg" : "text-xl"}`}>
               {route.route_name}
             </h2>
             <p className="text-sm text-gray-600">{route.river}</p>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+            className={`text-gray-400 hover:text-gray-600 active:text-gray-600 transition-colors flex-shrink-0 ${
+              isMobile ? "p-2 -mr-2 -mt-1" : ""
+            }`}
             aria-label="Close route info"
           >
-            <X size={20} />
+            <X size={isMobile ? 24 : 20} />
           </button>
         </div>
 
         <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className={isMobile ? "flex gap-6" : "grid grid-cols-2 gap-4"}>
             <div>
               <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
                 Distance

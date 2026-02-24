@@ -31,16 +31,19 @@ interface MapProps {
   selectedRiver: string | null;
   selectedRoute: string | null;
   onRouteSelect: (properties: any) => void;
+  isMobile: boolean;
 }
 
 function MapController({
   geoJsonData,
   selectedRiver,
   selectedRoute,
+  isMobile,
 }: {
   geoJsonData: any;
   selectedRiver: string | null;
   selectedRoute: string | null;
+  isMobile: boolean;
 }) {
   const map = useMap();
 
@@ -63,14 +66,15 @@ function MapController({
 
     if (featuresToFit.length > 0) {
       const bounds = L.geoJSON(featuresToFit).getBounds();
-      map.fitBounds(bounds, { padding: [50, 50] });
+      const padding: [number, number] = isMobile ? [20, 20] : [50, 50];
+      map.fitBounds(bounds, { padding });
     }
-  }, [map, geoJsonData, selectedRiver, selectedRoute]);
+  }, [map, geoJsonData, selectedRiver, selectedRoute, isMobile]);
 
   return null;
 }
 
-export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: MapProps) {
+export default function Map({ selectedRiver, selectedRoute, onRouteSelect, isMobile }: MapProps) {
   const [geoJsonData, setGeoJsonData] = useState<any>(null);
 
   useEffect(() => {
@@ -85,7 +89,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
     const color = RIVER_COLORS[river] || "#6b7280";
 
     return L.circleMarker(latlng, {
-      radius: 8,
+      radius: isMobile ? 10 : 8,
       fillColor: color,
       color: "#fff",
       weight: 2,
@@ -97,31 +101,32 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
   const onEachFeature = (feature: any, layer: L.Layer) => {
     if (feature.properties) {
       const props = feature.properties;
-      let popupContent = "";
 
       if (feature.geometry.type === "Point") {
-        popupContent = `
+        const popupContent = `
           <div class="p-2">
             <h3 class="font-bold text-lg mb-1">${props.name}</h3>
             <p class="text-sm text-gray-600">${props.river}</p>
             ${props.warning ? `<p class="text-xs mt-1 text-red-600">${props.warning}</p>` : ""}
           </div>
         `;
+        layer.bindPopup(popupContent);
       } else if (feature.geometry.type === "LineString") {
-        popupContent = `
-          <div class="p-2">
-            <h3 class="font-bold text-lg mb-1">${props.route_name}</h3>
-            <p class="text-sm text-gray-600">${props.river}</p>
-            <p class="text-sm mt-1">Distance: ${props.distance_miles} miles</p>
-          </div>
-        `;
-        
+        if (!isMobile) {
+          const popupContent = `
+            <div class="p-2">
+              <h3 class="font-bold text-lg mb-1">${props.route_name}</h3>
+              <p class="text-sm text-gray-600">${props.river}</p>
+              <p class="text-sm mt-1">Distance: ${props.distance_miles} miles</p>
+            </div>
+          `;
+          layer.bindPopup(popupContent);
+        }
+
         layer.on('click', () => {
           onRouteSelect(props);
         });
       }
-
-      layer.bindPopup(popupContent);
     }
   };
 
@@ -131,7 +136,6 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
       const routeName = feature.properties.route_name;
       const color = RIVER_COLORS[river] || "#6b7280";
 
-      // If a specific route is selected, highlight only that route
       if (selectedRoute) {
         if (routeName === selectedRoute) {
           return {
@@ -154,7 +158,6 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
         }
       }
 
-      // If a river is selected, highlight all routes in that river
       if (selectedRiver && river === selectedRiver) {
         return {
           color: color,
@@ -163,7 +166,6 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
         };
       }
 
-      // Default: nearly invisible
       return {
         color: "#d1d5db",
         weight: 1,
@@ -177,7 +179,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
     <div className="w-full h-full">
       <MapContainer
         center={[36.98, -86.44]}
-        zoom={10}
+        zoom={isMobile ? 11 : 10}
         style={{ height: "100%", width: "100%" }}
         className="z-0"
       >
@@ -198,6 +200,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect }: Map
               geoJsonData={geoJsonData}
               selectedRiver={selectedRiver}
               selectedRoute={selectedRoute}
+              isMobile={isMobile}
             />
           </>
         )}
