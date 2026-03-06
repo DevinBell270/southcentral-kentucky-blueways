@@ -47,12 +47,14 @@ npm install
 
 #### Install route-maintenance tooling
 
-The main app and the route-generation tooling are managed separately. If you need to run the geometry maintenance scripts in `scripts/`, install their dependencies in that directory as well:
+The main app and the route-generation tooling are managed separately. If you need to run the geometry maintenance scripts in `scripts/`, install their dependencies in that directory with a clean, lockfile-based install:
 
 ```bash
 cd scripts
-npm install
+npm ci
 ```
+
+Keep `scripts/node_modules/` untracked. The repository should only store `scripts/package.json` and `scripts/package-lock.json`.
 
 #### Run the development server
 
@@ -86,7 +88,7 @@ To run the route-maintenance scripts:
 
 ```bash
 cd scripts
-npm install
+npm ci
 npm run trace-routes
 ```
 
