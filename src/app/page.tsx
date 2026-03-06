@@ -59,7 +59,7 @@ export default function Home() {
         <Map
           selectedRiver={selectedRiver}
           selectedRoute={selectedRoute}
-          onRouteSelect={setSelectedRouteData}
+          onRouteSelect={handleRouteDataSelect}
           onPointSelect={handlePointSelect}
           isMobile
         />
@@ -125,7 +125,7 @@ export default function Home() {
         <Map
           selectedRiver={selectedRiver}
           selectedRoute={selectedRoute}
-          onRouteSelect={setSelectedRouteData}
+          onRouteSelect={handleRouteDataSelect}
           onPointSelect={handlePointSelect}
           isMobile={false}
         />
