@@ -1,0 +1,13 @@
+{
+  "name": "southcentral-kentucky-blueways-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "trace-routes": "node trace-routes.mjs",
+    "fix-route-endpoints": "node fix-route-endpoints.mjs"
+  },
+  "dependencies": {
+    "@turf/turf": "^7.3.4",
+    "osmtogeojson": "^2.2.12"
+  }
+}

@@ -45,6 +45,15 @@ When you open the live app, you can:
 npm install
 ```
 
+#### Install route-maintenance tooling
+
+The main app and the route-generation tooling are managed separately. If you need to run the geometry maintenance scripts in `scripts/`, install their dependencies in that directory as well:
+
+```bash
+cd scripts
+npm install
+```
+
 #### Run the development server
 
 ```bash
@@ -72,6 +81,14 @@ The main application entry point is `src/app/page.tsx`, which wires together:
 - The app loads this data on the client using:
   - `fetch("/blueways.geojson")` inside `src/app/page.tsx`.
 - **Scripts** in the `scripts/` directory (such as `trace-routes.mjs` and `fix-route-endpoints.mjs`) are used to generate and clean up route geometry and endpoints for the GeoJSON file.
+
+To run the route-maintenance scripts:
+
+```bash
+cd scripts
+npm install
+npm run trace-routes
+```
 
 If you edit `public/blueways.geojson`, restart the dev server or reload the page to see updates.
 
