@@ -35,7 +35,7 @@ const RIVER_COLORS: Record<string, string> = {
   "Clear Fork of Gasper River": "#8b5cf6",
 };
 
-const SK_BOUNDS: L.LatLngBoundsExpression = [
+const SK_BOUNDS: [L.LatLngTuple, L.LatLngTuple] = [
   [36.4, -87.8],
   [37.6, -85.2],
 ];
