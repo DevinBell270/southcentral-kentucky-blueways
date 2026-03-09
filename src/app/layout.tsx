@@ -30,6 +30,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://waterservices.usgs.gov" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://cdn-uicons.flaticon.com"
+          crossOrigin=""
+        />
         <link
           rel="stylesheet"
           href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css"
