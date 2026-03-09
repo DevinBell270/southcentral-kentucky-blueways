@@ -64,10 +64,6 @@ export function isRouteProperties(value: unknown): value is RouteProperties {
   );
 }
 
-export function isPointFeature(feature: BluewaysFeature): feature is BluewaysPointFeature {
-  return feature.geometry.type === "Point";
-}
-
 export function isRouteFeature(feature: BluewaysFeature): feature is BluewaysRouteFeature {
   return feature.geometry.type === "LineString";
 }
