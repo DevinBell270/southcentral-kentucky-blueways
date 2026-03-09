@@ -8,6 +8,11 @@ import RouteInfoBox from "@/components/RouteInfoBox";
 import LocationInfoBox from "@/components/LocationInfoBox";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useFlowRatings } from "@/hooks/useFlowRatings";
+import type {
+  BluewaysFeatureCollection,
+  PointProperties,
+  RouteProperties,
+} from "@/utils/blueways";
 
 const Map = dynamic(() => import("@/components/Map"), {
   ssr: false,
@@ -21,9 +26,9 @@ const Map = dynamic(() => import("@/components/Map"), {
 export default function Home() {
   const [selectedRiver, setSelectedRiver] = useState<string | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<string | null>(null);
-  const [selectedRouteData, setSelectedRouteData] = useState<any | null>(null);
-  const [selectedPointData, setSelectedPointData] = useState<any | null>(null);
-  const [geoJsonData, setGeoJsonData] = useState<any>(null);
+  const [selectedRouteData, setSelectedRouteData] = useState<RouteProperties | null>(null);
+  const [selectedPointData, setSelectedPointData] = useState<PointProperties | null>(null);
+  const [geoJsonData, setGeoJsonData] = useState<BluewaysFeatureCollection | null>(null);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
   const { gaugeRatings } = useFlowRatings(geoJsonData);
@@ -31,11 +36,11 @@ export default function Home() {
   useEffect(() => {
     fetch("/blueways.geojson")
       .then((response) => response.json())
-      .then((data) => setGeoJsonData(data))
+      .then((data: BluewaysFeatureCollection) => setGeoJsonData(data))
       .catch((error) => console.error("Error loading GeoJSON:", error));
   }, []);
 
-  const handleRouteDataSelect = (data: any) => {
+  const handleRouteDataSelect = (data: RouteProperties) => {
     setSelectedRouteData(data);
     setSelectedPointData(null);
     if (data?.route_name) setSelectedRoute(data.route_name);
@@ -45,7 +50,7 @@ export default function Home() {
     }
   };
 
-  const handlePointSelect = (data: any) => {
+  const handlePointSelect = (data: PointProperties) => {
     setSelectedPointData(data);
     setSelectedRouteData(null);
     if (isMobile) {

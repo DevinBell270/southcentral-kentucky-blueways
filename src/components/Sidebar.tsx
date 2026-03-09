@@ -3,14 +3,20 @@
 import { useState, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Waves, MapPin, AlertTriangle, X } from "lucide-react";
 import type { FlowRating } from "@/hooks/useFlowRatings";
+import type {
+  BluewaysFeatureCollection,
+  BluewaysRouteFeature,
+  RouteProperties,
+} from "@/utils/blueways";
+import { isRouteFeature } from "@/utils/blueways";
 
 interface SidebarProps {
   selectedRiver: string | null;
   setSelectedRiver: (river: string | null) => void;
   selectedRoute: string | null;
   setSelectedRoute: (route: string | null) => void;
-  geoJsonData: any;
-  setSelectedRouteData: (data: any) => void;
+  geoJsonData: BluewaysFeatureCollection | null;
+  setSelectedRouteData: (data: RouteProperties) => void;
   gaugeRatings: Record<string, FlowRating>;
   isMobile: boolean;
   isOpen: boolean;
@@ -158,7 +164,7 @@ function SidebarContent({
   setSelectedRiver: (river: string | null) => void;
   selectedRoute: string | null;
   handleRouteClick: (route: string) => void;
-  geoJsonData: any;
+  geoJsonData: BluewaysFeatureCollection | null;
   gaugeRatings: Record<string, FlowRating>;
   isMobile: boolean;
 }) {
@@ -169,9 +175,8 @@ function SidebarContent({
   const routeGaugeMap: Record<string, string> = {};
   if (geoJsonData?.features) {
     for (const feature of geoJsonData.features) {
-      const { route_name, usgs_gauge_id } = feature.properties ?? {};
-      if (route_name && usgs_gauge_id) {
-        routeGaugeMap[route_name] = usgs_gauge_id;
+      if (isRouteFeature(feature) && feature.properties.usgs_gauge_id) {
+        routeGaugeMap[feature.properties.route_name] = feature.properties.usgs_gauge_id;
       }
     }
   }
@@ -351,7 +356,8 @@ export default function Sidebar({
 
     if (geoJsonData && geoJsonData.features) {
       const feature = geoJsonData.features.find(
-        (f: any) => f.properties.route_name === routeName
+        (feature): feature is BluewaysRouteFeature =>
+          isRouteFeature(feature) && feature.properties.route_name === routeName
       );
       if (feature) {
         setSelectedRouteData(feature.properties);
