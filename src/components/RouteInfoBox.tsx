@@ -2,17 +2,11 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { X, TriangleAlert } from "lucide-react";
+import type { RouteProperties } from "@/utils/blueways";
+import { getFirstFlowCfs, type UsgsInstantValuesResponse } from "@/utils/usgs";
 
 interface RouteInfoBoxProps {
-  route: {
-    route_name: string;
-    river: string;
-    distance_miles: number;
-    kdfwr_float_time?: string;
-    description?: string;
-    hazards?: string;
-    usgs_gauge_id?: string;
-  };
+  route: RouteProperties;
   onClose: () => void;
   isMobile: boolean;
 }
@@ -20,57 +14,52 @@ interface RouteInfoBoxProps {
 const DISMISS_THRESHOLD = 120;
 
 export default function RouteInfoBox({ route, onClose, isMobile }: RouteInfoBoxProps) {
-  const [flowCfs, setFlowCfs] = useState<number | null>(null);
-  const [flowLoading, setFlowLoading] = useState<boolean>(false);
+  const [resolvedGaugeId, setResolvedGaugeId] = useState<string | null>(null);
+  const [resolvedFlowCfs, setResolvedFlowCfs] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const touchStartY = useRef(0);
+  const gaugeId = route.usgs_gauge_id ?? null;
+  const flowCfs = resolvedGaugeId === gaugeId ? resolvedFlowCfs : null;
+  const flowLoading = gaugeId !== null && resolvedGaugeId !== gaugeId;
 
   useEffect(() => {
-    if (!route.usgs_gauge_id) {
+    if (!gaugeId) {
       return;
     }
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-    setFlowLoading(true);
-    setFlowCfs(null);
-
     fetch(
-      `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${route.usgs_gauge_id}&parameterCd=00060`,
+      `https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gaugeId}&parameterCd=00060`,
       { signal: controller.signal }
     )
       .then((response) => {
         if (!response.ok) throw new Error("Network response was not ok");
-        return response.json();
+        return response.json() as Promise<UsgsInstantValuesResponse>;
       })
       .then((data) => {
-        try {
-          const cfsValue = parseFloat(
-            data.value.timeSeries[0].values[0].value[0].value
-          );
-          setFlowCfs(cfsValue);
-        } catch (error) {
-          throw new Error("Failed to parse flow data");
-        }
+        const cfsValue = getFirstFlowCfs(data);
+        setResolvedFlowCfs(cfsValue);
+        setResolvedGaugeId(gaugeId);
       })
       .catch((error) => {
         if (error.name !== "AbortError") {
           console.error("Flow data unavailable:", error);
         }
-        setFlowCfs(null);
+        setResolvedFlowCfs(null);
+        setResolvedGaugeId(gaugeId);
       })
       .finally(() => {
         clearTimeout(timeoutId);
-        setFlowLoading(false);
       });
 
     return () => {
       clearTimeout(timeoutId);
       controller.abort();
     };
-  }, [route.usgs_gauge_id]);
+  }, [gaugeId]);
 
   const getFlowColorClass = (cfs: number): string => {
     if (cfs <= 300) return "text-green-600 font-bold";

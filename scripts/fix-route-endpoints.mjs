@@ -125,13 +125,10 @@ async function main() {
     const endToFrom = distance(endCoord, fromCoord);
     const endToTo = distance(endCoord, toCoord);
     
-    let needsReverse = false;
-    
     // If start is closer to "to" point and end is closer to "from" point, reverse it
     if (startToTo < startToFrom && endToFrom < endToTo) {
       console.log(`   🔄 REVERSING: start is ${startToTo.toFixed(0)}m from TO (should be FROM)`);
       coords.reverse();
-      needsReverse = true;
       reversedCount++;
     }
     

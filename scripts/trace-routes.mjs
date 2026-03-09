@@ -194,7 +194,7 @@ function findNearestPointOnWaterway(point, waterway, maxDistance = 1.0) {
     }
     
     return snapped;
-  } catch (error) {
+  } catch {
     return null;
   }
 }

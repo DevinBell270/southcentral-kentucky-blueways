@@ -2,24 +2,18 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { X, TriangleAlert, ArrowRight, ArrowLeft, Navigation } from "lucide-react";
-
-interface PointProperties {
-  name: string;
-  river: string;
-  warning?: string;
-}
-
-interface RouteProperties {
-  route_name: string;
-  river: string;
-  distance_miles: number;
-  kdfwr_float_time?: string;
-  usgs_gauge_id?: string;
-}
+import type {
+  BluewaysFeature,
+  BluewaysFeatureCollection,
+  PointProperties,
+  RouteProperties,
+} from "@/utils/blueways";
+import { isRouteFeature } from "@/utils/blueways";
+import { getFirstFlowCfs, type UsgsInstantValuesResponse } from "@/utils/usgs";
 
 interface LocationInfoBoxProps {
   point: PointProperties;
-  geoJsonData: any;
+  geoJsonData: BluewaysFeatureCollection | null;
   onRouteSelect: (properties: RouteProperties) => void;
   onClose: () => void;
   isMobile: boolean;
@@ -50,14 +44,14 @@ function getPartnerName(routeName: string, pointName: string, role: "put-in" | "
   }
 }
 
-function getAdjacentRoutes(pointName: string, features: any[]): { putInRoutes: RouteProperties[]; takeOutRoutes: RouteProperties[] } {
-  const lines = features.filter((f: any) => f.geometry.type === "LineString");
+function getAdjacentRoutes(pointName: string, features: BluewaysFeature[]): { putInRoutes: RouteProperties[]; takeOutRoutes: RouteProperties[] } {
+  const lines = features.filter(isRouteFeature);
   const putInRoutes = lines
-    .filter((f: any) => f.properties.route_name.startsWith(pointName + " to "))
-    .map((f: any) => f.properties as RouteProperties);
+    .filter((feature) => feature.properties.route_name.startsWith(pointName + " to "))
+    .map((feature) => feature.properties);
   const takeOutRoutes = lines
-    .filter((f: any) => f.properties.route_name.endsWith(" to " + pointName))
-    .map((f: any) => f.properties as RouteProperties);
+    .filter((feature) => feature.properties.route_name.endsWith(" to " + pointName))
+    .map((feature) => feature.properties);
   return { putInRoutes, takeOutRoutes };
 }
 
@@ -75,11 +69,10 @@ function FlowDisplay({ gaugeId }: { gaugeId: string }) {
     )
       .then((r) => {
         if (!r.ok) throw new Error("Network error");
-        return r.json();
+        return r.json() as Promise<UsgsInstantValuesResponse>;
       })
       .then((data) => {
-        const val = parseFloat(data.value.timeSeries[0].values[0].value[0].value);
-        setFlowCfs(val);
+        setFlowCfs(getFirstFlowCfs(data));
       })
       .catch((err) => {
         if (err.name !== "AbortError") setFlowCfs(null);
@@ -189,8 +182,6 @@ function LocationContent({
   onRouteSelect: (r: RouteProperties) => void;
   onClose: () => void;
 }) {
-  const riverBadgeClass = RIVER_COLORS[point.river] ?? "bg-gray-100 text-gray-700 border-gray-200";
-
   return (
     <div className="space-y-4">
       {/* Warning */}

@@ -12,8 +12,19 @@ import {
 import L from "leaflet";
 import { LocateFixed, Loader2 } from "lucide-react";
 import "leaflet/dist/leaflet.css";
+import type {
+  BluewaysFeatureCollection,
+  BluewaysRouteFeature,
+  PointProperties,
+  RouteProperties,
+} from "@/utils/blueways";
+import {
+  isPointProperties,
+  isRouteFeature,
+  isRouteProperties,
+} from "@/utils/blueways";
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: string })._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
@@ -43,8 +54,8 @@ const SK_BOUNDS: [L.LatLngTuple, L.LatLngTuple] = [
 interface MapProps {
   selectedRiver: string | null;
   selectedRoute: string | null;
-  onRouteSelect: (properties: any) => void;
-  onPointSelect: (properties: any) => void;
+  onRouteSelect: (properties: RouteProperties) => void;
+  onPointSelect: (properties: PointProperties) => void;
   isMobile: boolean;
 }
 
@@ -61,7 +72,7 @@ function MapController({
   selectedRoute,
   isMobile,
 }: {
-  geoJsonData: any;
+  geoJsonData: BluewaysFeatureCollection | null;
   selectedRiver: string | null;
   selectedRoute: string | null;
   isMobile: boolean;
@@ -71,17 +82,19 @@ function MapController({
   useEffect(() => {
     if (!geoJsonData) return;
 
-    let featuresToFit: any[] = [];
+    let featuresToFit: BluewaysRouteFeature[] = [];
 
     if (selectedRoute) {
       featuresToFit = geoJsonData.features.filter(
-        (f: any) => f.properties.route_name === selectedRoute
+        (feature): feature is BluewaysRouteFeature =>
+          isRouteFeature(feature) &&
+          feature.properties.route_name === selectedRoute
       );
     } else if (selectedRiver) {
       featuresToFit = geoJsonData.features.filter(
-        (f: any) =>
-          f.properties.river === selectedRiver &&
-          f.geometry.type === "LineString"
+        (feature): feature is BluewaysRouteFeature =>
+          isRouteFeature(feature) &&
+          feature.properties.river === selectedRiver
       );
     }
 
@@ -129,7 +142,7 @@ function getGeolocationErrorMessage(error: GeolocationPositionError) {
 }
 
 export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPointSelect, isMobile }: MapProps) {
-  const [geoJsonData, setGeoJsonData] = useState<any>(null);
+  const [geoJsonData, setGeoJsonData] = useState<BluewaysFeatureCollection | null>(null);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
@@ -137,7 +150,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
   useEffect(() => {
     fetch("/blueways.geojson")
       .then((response) => response.json())
-      .then((data) => setGeoJsonData(data))
+      .then((data: BluewaysFeatureCollection) => setGeoJsonData(data))
       .catch((error) => console.error("Error loading GeoJSON:", error));
   }, []);
 
@@ -192,8 +205,13 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
     );
   }, []);
 
-  const pointToLayer = (feature: any, latlng: L.LatLng) => {
-    const river = feature.properties.river || "Unknown";
+  const pointToLayer = (
+    feature: { properties?: unknown } | undefined,
+    latlng: L.LatLng
+  ) => {
+    const river = feature?.properties && isPointProperties(feature.properties)
+      ? feature.properties.river
+      : "Unknown";
     const color = RIVER_COLORS[river] || "#6b7280";
 
     return L.circleMarker(latlng, {
@@ -206,36 +224,41 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
     });
   };
 
-  const onEachFeature = (feature: any, layer: L.Layer) => {
-    if (feature.properties) {
+  const onEachFeature = (
+    feature: { geometry?: { type?: string }; properties?: unknown },
+    layer: L.Layer
+  ) => {
+    if (feature.geometry?.type === "Point" && isPointProperties(feature.properties)) {
+      const props = feature.properties;
+      layer.on("click", (e: L.LeafletMouseEvent) => {
+        L.DomEvent.stopPropagation(e);
+        onPointSelect(props);
+      });
+      return;
+    }
+
+    if (feature.geometry?.type === "LineString" && isRouteProperties(feature.properties)) {
       const props = feature.properties;
 
-      if (feature.geometry.type === "Point") {
-        layer.on("click", (e: L.LeafletMouseEvent) => {
-          L.DomEvent.stopPropagation(e);
-          onPointSelect(props);
-        });
-      } else if (feature.geometry.type === "LineString") {
-        if (!isMobile) {
-          const popupContent = `
+      if (!isMobile) {
+        const popupContent = `
             <div class="p-2">
               <h3 class="font-bold text-lg mb-1">${props.route_name}</h3>
               <p class="text-sm text-gray-600">${props.river}</p>
               <p class="text-sm mt-1">Distance: ${props.distance_miles} miles</p>
             </div>
           `;
-          layer.bindPopup(popupContent);
-        }
-
-        layer.on('click', () => {
-          onRouteSelect(props);
-        });
+        layer.bindPopup(popupContent);
       }
+
+      layer.on("click", () => {
+        onRouteSelect(props);
+      });
     }
   };
 
-  const styleFeature = (feature: any) => {
-    if (feature.geometry.type === "LineString") {
+  const styleFeature = (feature?: { geometry?: { type?: string }; properties?: unknown }) => {
+    if (feature?.geometry?.type === "LineString" && isRouteProperties(feature.properties)) {
       const river = feature.properties.river || "Unknown";
       const routeName = feature.properties.route_name;
       const color = RIVER_COLORS[river] || "#6b7280";
