@@ -23,6 +23,7 @@ import {
   isRouteFeature,
   isRouteProperties,
 } from "@/utils/blueways";
+import { getMapTileLayerProps } from "@/config/mapTiles";
 
 delete (L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: string })._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -146,6 +147,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const tileLayerProps = getMapTileLayerProps();
 
   useEffect(() => {
     fetch("/blueways.geojson")
@@ -334,10 +336,7 @@ export default function Map({ selectedRiver, selectedRoute, onRouteSelect, onPoi
         style={{ height: "100%", width: "100%" }}
         className="z-0"
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer {...tileLayerProps} />
         {userLocation && (
           <>
             <Circle

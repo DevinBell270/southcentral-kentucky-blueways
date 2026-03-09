@@ -45,6 +45,18 @@ When you open the live app, you can:
 npm install
 ```
 
+#### Configure map tiles
+
+Copy `.env.example` to `.env.local` if you want to use a basemap provider with modern image formats such as WebP.
+
+- `NEXT_PUBLIC_MAPTILER_API_KEY`: switches the Leaflet basemap to MapTiler `streets-v2` WebP raster tiles.
+- `NEXT_PUBLIC_TILE_URL`: optional full override for another browser-safe XYZ tile provider.
+- `NEXT_PUBLIC_TILE_ATTRIBUTION`: attribution string used with `NEXT_PUBLIC_TILE_URL`.
+- `NEXT_PUBLIC_TILE_MAX_ZOOM`: optional max zoom override for a custom provider.
+- `NEXT_PUBLIC_TILE_SUBDOMAINS`: optional comma-separated subdomains for a custom provider, such as `a,b,c`.
+
+If none of these values are set, the app falls back to the standard OpenStreetMap raster tiles.
+
 #### Install route-maintenance tooling
 
 The main app and the route-generation tooling are managed separately. If you need to run the geometry maintenance scripts in `scripts/`, install their dependencies in that directory with a clean, lockfile-based install:
@@ -103,6 +115,13 @@ If you edit `public/blueways.geojson`, restart the dev server or reload the page
 - **Styling**: Tailwind CSS 4
 
 This project was originally created with `create-next-app` and then customized into a purpose-built blueways mapping tool for Southcentral Kentucky.
+
+### Basemap Provider Notes
+
+- The Leaflet basemap configuration lives in `src/config/mapTiles.ts`.
+- The default modern-format path uses MapTiler WebP raster tiles when `NEXT_PUBLIC_MAPTILER_API_KEY` is set.
+- Any custom tile provider must allow direct browser tile requests and include the correct attribution text for that service.
+- The OpenStreetMap fallback remains in place so the app still renders without additional configuration, but that fallback uses PNG tiles.
 
 ### Contributing
 
